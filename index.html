@@ -76,32 +76,79 @@
 
 
 
-
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YouTube Tutorials</title>
+  <title>HTML Tutorials</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      background-color: #0077cc;
+      color: white;
+      padding: 20px 0;
+      margin-bottom: 30px;
+    }
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 0 20px 40px;
+    }
+    .video {
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      width: 350px;
+      padding: 10px;
+    }
+    iframe {
+      width: 100%;
+      height: 200px;
+      border-radius: 8px;
+      border: none;
+    }
+    h2 {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-  <h1>📚 YouTube Tutorials</h1>
 
-  <ul>
-    <li>
-      <a href="https://www.youtube.com/watch?v=UB1O30fR-EE" target="_blank">
-        🖥️ HTML Course For Absolute Beginners
-      </a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=PkZNo7MFNFg" target="_blank">
-        💻 JavaScript Tutorial for Beginners
-      </a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank">
-        🖥️ Python Full Course for Beginners
-      </a>
-    </li>
-  </ul>
+  <h1>Top 3 HTML Tutorial Videos</h1>
+
+  <div class="video-container">
+    <div class="video">
+      <h2>1. HTML Crash Course for Beginners</h2>
+      <iframe src="https://www.youtube.com/embed/UB1O30fR-EE" 
+              title="HTML Crash Course for Beginners"
+              allowfullscreen></iframe>
+    </div>
+
+    <div class="video">
+      <h2>2. Learn HTML in 1 Hour</h2>
+      <iframe src="https://www.youtube.com/embed/pQN-pnXPaVg"
+              title="Learn HTML in 1 Hour"
+              allowfullscreen></iframe>
+    </div>
+
+    <div class="video">
+      <h2>3. HTML Tutorial for Absolute Beginners</h2>
+      <iframe src="https://www.youtube.com/embed/ok-plXXHlWw"
+              title="HTML Tutorial for Absolute Beginners"
+              allowfullscreen></iframe>
+    </div>
+  </div>
+
 </body>
 </html>
+
+
+
+
+
