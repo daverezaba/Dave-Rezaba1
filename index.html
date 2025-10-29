@@ -75,20 +75,72 @@
 <!-- /wp:heading -->
 
 
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Embed YouTube Video</title>
+  <title>YouTube Videos Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      text-align: center;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    iframe {
+      width: 560px;
+      height: 315px;
+      border: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    a {
+      display: block;
+      margin-top: 5px;
+      text-decoration: none;
+      color: #0073e6;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <h2>My YouTube Video</h2>
-  <iframe width="560" height="315"
-          src="https://m.youtube.com/watch?v=jQ1sfKIl50E&pp=ygUQSG93IHRvIHVzZSBmaWdtYQ%3D%3D"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-  </iframe>
+
+  <h1>My Favorite YouTube Videos</h1>
+
+  <div class="video-container">
+    <!-- Video 1 -->
+    <div>
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Watch on YouTube</a>
+    </div>
+
+    <!-- Video 2 -->
+    <div>
+      <iframe src="https://www.youtube.com/embed/3JZ_D3ELwOQ" allowfullscreen></iframe>
+      <a href="https://www.youtube.com/watch?v=3JZ_D3ELwOQ" target="_blank">Watch on YouTube</a>
+    </div>
+
+    <!-- Video 3 -->
+    <div>
+      <iframe src="https://www.youtube.com/embed/tAGnKpE4NCI" allowfullscreen></iframe>
+      <a href="https://www.youtube.com/watch?v=tAGnKpE4NCI" target="_blank">Watch on YouTube</a>
+    </div>
+  </div>
+
 </body>
 </html>
