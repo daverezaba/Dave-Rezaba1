@@ -1,313 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dave Rezaba Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dave Rezaba | Portfolio</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --accent-red: #e11d48;
+            --text-white: #ffffff;
+            --card-glass: rgba(255, 255, 255, 0.05);
+        }
 
-<style>
-:root {
-    --black: #0f0f0f;
-    --dark: #1a1a1a;
-    --red: #e50914;
-    --light-red: #ff4d4d;
-    --white: #ffffff;
-    --gray: #a1a1aa;
-    --card: rgba(255,255,255,0.05);
-    --blur: blur(14px);
-    --transition: all 0.3s ease;
-}
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            overflow-x: hidden;
+        }
 
-body {
-    background: var(--black);
-    color: var(--white);
-    overflow-x: hidden;
-}
+        /* Desktop Animated Background */
+        .desktop-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #000 25%, #0f0f0f 100%);
+        }
 
-/* 🔥 ANIMATED BACKGROUND */
-.live-bg {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: linear-gradient(270deg, #000000, #1a0000, #330000, #000000);
-    background-size: 600% 600%;
-    animation: bgMove 15s ease infinite;
-}
+        .desktop-bg::before {
+            content: "";
+            position: absolute;
+            width: 200%; height: 200%;
+            background-image: linear-gradient(rgba(225, 29, 72, 0.1) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(225, 29, 72, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
 
-@keyframes bgMove {
-    0% { background-position: 0% }
-    50% { background-position: 100% }
-    100% { background-position: 0% }
-}
+        @keyframes gridMove {
+            0% { transform: translate(-50%, -50%); }
+            100% { transform: translate(0, 0); }
+        }
 
-/* LAYOUT */
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 30px;
-}
+        .container { max-width: 900px; margin: 0 auto; padding: 40px; }
 
-/* HEADER */
-header {
-    text-align: center;
-    padding: 60px 20px;
-}
+        header { text-align: center; margin-bottom: 50px; }
 
-.profile-pic {
-    width: 150px;
-    border-radius: 50%;
-    border: 3px solid var(--red);
-    transition: var(--transition);
-}
+        .profile-pic {
+            width: 150px; height: 150px; border-radius: 10px;
+            border: 3px solid var(--accent-red);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
 
-.profile-pic:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 25px var(--red);
-}
+        h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
 
-h1 {
-    font-size: 2.8rem;
-    margin-top: 15px;
-}
+        .nav-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
 
-header p {
-    color: var(--red);
-    font-weight: bold;
-}
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--text-white);
+            color: var(--text-white);
+            padding: 10px 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-/* NAV */
-.nav-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin: 30px 0;
-    flex-wrap: wrap;
-}
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+        }
 
-.tab-btn {
-    background: var(--dark);
-    border: 1px solid #333;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: var(--transition);
-}
+        .card {
+            background: var(--card-glass);
+            padding: 40px;
+            border-left: 4px solid var(--accent-red);
+            backdrop-filter: blur(10px);
+        }
 
-.tab-btn:hover,
-.tab-btn.active {
-    background: var(--red);
-    transform: translateY(-2px);
-}
+        .content-section { display: none; }
+        .content-section.active { display: block; }
 
-/* SECTIONS */
-.content-section {
-    display: none;
-    animation: fade 0.4s ease;
-}
+        .link-button {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid var(--accent-red);
+            color: var(--text-white);
+            text-decoration: none;
+            margin-right: 10px;
+        }
 
-.content-section.active {
-    display: block;
-}
-
-@keyframes fade {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* CARD */
-.card {
-    background: var(--card);
-    backdrop-filter: var(--blur);
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.08);
-    margin-bottom: 25px;
-}
-
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    gap: 20px;
-}
-
-/* BUTTON */
-.link-button {
-    display: inline-block;
-    padding: 10px 18px;
-    border: 1px solid var(--red);
-    color: var(--red);
-    border-radius: 10px;
-    text-decoration: none;
-    margin-top: 10px;
-    transition: var(--transition);
-}
-
-.link-button:hover {
-    background: var(--red);
-    color: white;
-}
-
-/* AI BUTTON */
-.ai-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: var(--red);
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-#ai-widget {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 320px;
-    background: #111;
-    border-radius: 15px;
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-#ai-header {
-    background: var(--red);
-    padding: 10px;
-    font-weight: bold;
-}
-
-#ai-body {
-    padding: 15px;
-    height: 250px;
-    overflow-y: auto;
-    font-size: 14px;
-}
-
-#ai-input-area {
-    display: flex;
-}
-
-#ai-input {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    outline: none;
-}
-
-#ai-send {
-    background: var(--red);
-    border: none;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-    h1 { font-size: 2rem; }
-}
-</style>
+        .link-button:hover { background: var(--accent-red); }
+    </style>
 </head>
-
 <body>
 
-<div class="live-bg"></div>
+<div class="desktop-bg"></div>
 
 <div class="container">
+    <header>
+        <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/image_editor_output_image-2114367514-17610313795633610151855319212430.jpg?w=585" class="profile-pic" alt="Dave Rezaba">
+        <h1>DAVE REZABA</h1>
+        <p style="color: var(--accent-red);">IT PROFESSIONAL</p>
+    </header>
 
-<header>
-<img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/image_editor_output_image-2114367514-17610313795633610151855319212430.jpg" class="profile-pic">
-<h1>DAVE REZABA</h1>
-<p>IT Professional</p>
-</header>
+    <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="openTab('about')">PROFILE</button>
+        <button class="tab-btn" onclick="openTab('projects')">WORKS</button>
+    </nav>
 
-<nav class="nav-tabs">
-<button class="tab-btn active" onclick="openTab(event,'about')">Profile</button>
-<button class="tab-btn" onclick="openTab(event,'skills')">Skills</button>
-<button class="tab-btn" onclick="openTab(event,'projects')">Projects</button>
-</nav>
+    <section id="about" class="content-section active">
+        <div class="card">
+            <h2>ABOUT ME</h2>
+            <p>Motivated IT professional focused on Networking, Hardware, and Web Development. Passionate about creating efficient digital solutions.</p>
+            <br>
+            <a href="#" class="link-button">DOWNLOAD CV</a>
+        </div>
+    </section>
 
-<section id="about" class="content-section active">
-<div class="card">
-<h2>About Me</h2>
-<p>Motivated IT student skilled in networking, systems, and web development.</p>
-
-<a href="#" class="link-button">Download CV</a>
-</div>
-</section>
-
-<section id="skills" class="content-section">
-<div class="card grid">
-<div>
-<h3>Web Dev</h3>
-<p>PHP, MySQL</p>
-</div>
-<div>
-<h3>Multimedia</h3>
-<p>Photoshop</p>
-</div>
-</div>
-</section>
-
-<section id="projects" class="content-section">
-<div class="card">
-<h2>Projects</h2>
-<a href="#" class="link-button">View Work</a>
-</div>
-</section>
-
-</div>
-
-<div class="ai-toggle" onclick="toggleAI()">💬</div>
-
-<div id="ai-widget">
-<div id="ai-header">Assistant</div>
-<div id="ai-body">Ask about Dave!</div>
-<div id="ai-input-area">
-<input id="ai-input">
-<button id="ai-send" onclick="askAI()">Send</button>
-</div>
+    <section id="projects" class="content-section">
+        <div class="card">
+            <h2>PROJECTS</h2>
+            <p>Explore my recent work in UI/UX and Web Development.</p>
+        </div>
+    </section>
 </div>
 
 <script>
-function openTab(event, tabId) {
-    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-
-    document.getElementById(tabId).classList.add('active');
-    event.currentTarget.classList.add('active');
-}
-
-function toggleAI() {
-    const w = document.getElementById('ai-widget');
-    w.style.display = (w.style.display === 'flex') ? 'none' : 'flex';
-}
-
-function askAI() {
-    let input = document.getElementById('ai-input');
-    let body = document.getElementById('ai-body');
-
-    body.innerHTML += "<br><b>You:</b> " + input.value;
-    body.innerHTML += "<br><b>AI:</b> Cool question 😎";
-
-    input.value = "";
-}
+    function openTab(tabId) {
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
 </script>
 
 </body>
