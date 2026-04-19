@@ -1,140 +1,481 @@
+This is a bold, high-contrast transformation. I’ve swapped your pastel blues for a "Gamer/Tech Noir" aesthetic using deep blacks, vibrant reds, and crisp white text. 
+
+The live background now features a slow-bleeding 50/50 red and black mesh gradient, and the glassmorphism on the cards has been adjusted to look sleek against the dark backdrop.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dave Rezaba | Portfolio</title>
+    <title>Portfolio website</title>
     <style>
         :root {
+            /* New Color Palette: Black, Red, White */
             --bg-dark: #0a0a0a;
             --accent-red: #e11d48;
-            --text-white: #ffffff;
-            --card-glass: rgba(255, 255, 255, 0.05);
+            --deep-red: #9f1239;
+            --pure-white: #ffffff;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(20, 20, 20, 0.85); /* Dark translucent cards */
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-white);
+            background: var(--bg-dark);
+            color: var(--text-main);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Desktop Animated Background */
-        .desktop-bg {
+        /* Live Wallpaper: 50% Red and 50% Black Mesh */
+        .live-bg {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
-            background: linear-gradient(45deg, #000 25%, #0f0f0f 100%);
+            background: linear-gradient(135deg, #000000 0%, #000000 45%, #7f1d1d 55%, #e11d48 100%);
+            background-size: 400% 400%;
+            animation: meshMove 10s ease-in-out infinite;
         }
 
-        .desktop-bg::before {
+        @keyframes meshMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Subtle Dark Grid instead of white particles */
+        .live-bg::after {
             content: "";
             position: absolute;
-            width: 200%; height: 200%;
-            background-image: linear-gradient(rgba(225, 29, 72, 0.1) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(225, 29, 72, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
 
-        @keyframes gridMove {
-            0% { transform: translate(-50%, -50%); }
-            100% { transform: translate(0, 0); }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 40px; }
-
-        header { text-align: center; margin-bottom: 50px; }
+        /* Header Area */
+        header {
+            text-align: center;
+            padding: 70px 20px 30px;
+        }
 
         .profile-pic {
-            width: 150px; height: 150px; border-radius: 10px;
-            border: 3px solid var(--accent-red);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--accent-red);
             object-fit: cover;
             margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(225, 29, 72, 0.3);
+            transition: var(--transition);
         }
 
-        h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+        .profile-pic:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(225, 29, 72, 0.5);
+        }
 
-        .nav-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        h1 {
+            font-size: 2.8rem;
+            color: var(--pure-white);
+            letter-spacing: -0.5px;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        header p {
+            color: var(--accent-red);
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 45px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
 
         .tab-btn {
-            background: transparent;
-            border: 1px solid var(--text-white);
-            color: var(--text-white);
-            padding: 10px 25px;
+            background: rgba(15, 15, 15, 0.8);
+            border: 1px solid #333;
+            color: var(--pure-white);
+            padding: 12px 26px;
+            border-radius: 14px;
             cursor: pointer;
-            transition: 0.3s;
+            backdrop-filter: blur(15px);
+            transition: var(--transition);
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         .tab-btn:hover, .tab-btn.active {
             background: var(--accent-red);
+            color: white;
+            box-shadow: 0 8px 20px rgba(225, 29, 72, 0.4);
+            transform: translateY(-2px);
             border-color: var(--accent-red);
         }
 
-        .card {
-            background: var(--card-glass);
-            padding: 40px;
-            border-left: 4px solid var(--accent-red);
-            backdrop-filter: blur(10px);
+        /* Content Sections */
+        .content-section {
+            display: none;
+            animation: fadeInSlide 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
-        .content-section { display: none; }
-        .content-section.active { display: block; }
+        .content-section.active {
+            display: block;
+        }
 
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            backdrop-filter: blur(12px);
+        }
+
+        h2, h3 {
+            color: var(--accent-red);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .info-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .info-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+            color: var(--text-main);
+        }
+
+        .info-list strong { color: var(--accent-red); }
+
+        img {
+            max-width: 100%;
+            border-radius: 16px;
+            margin: 15px 0;
+            border: 2px solid #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* Links */
         .link-button {
             display: inline-block;
-            padding: 10px 20px;
-            border: 1px solid var(--accent-red);
-            color: var(--text-white);
+            padding: 12px 24px;
+            background: transparent;
+            color: var(--accent-red);
+            border: 2px solid var(--accent-red);
             text-decoration: none;
-            margin-right: 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            margin: 10px 10px 10px 0;
+            transition: var(--transition);
         }
 
-        .link-button:hover { background: var(--accent-red); }
+        .link-button:hover {
+            background: var(--accent-red);
+            color: white;
+            box-shadow: 0 10px 20px rgba(225, 29, 72, 0.3);
+        }
+
+        /* AI Assistant Widget */
+        #ai-widget {
+            position: fixed;
+            bottom: 100px;
+            right: 25px;
+            width: 340px;
+            background: #111;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+            border: 1px solid var(--accent-red);
+        }
+
+        #ai-header {
+            background: var(--accent-red);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        #ai-body {
+            height: 320px;
+            overflow-y: auto;
+            padding: 20px;
+            font-size: 0.95rem;
+            background: #0a0a0a;
+            color: #eee;
+        }
+
+        #ai-input-area {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #222;
+            gap: 10px;
+        }
+
+        #ai-input {
+            flex: 1;
+            padding: 10px 15px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        #ai-input:focus { border-color: var(--accent-red); }
+
+        #ai-send {
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .ai-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(225, 29, 72, 0.4);
+            z-index: 999;
+            transition: var(--transition);
+            font-size: 24px;
+        }
+
+        .ai-toggle:hover { transform: scale(1.1) rotate(5deg); }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid #333;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .nav-tabs { flex-wrap: wrap; }
+            #ai-widget { width: 90%; right: 5%; }
+        }
     </style>
 </head>
 <body>
 
-<div class="desktop-bg"></div>
+<div class="live-bg"></div>
 
 <div class="container">
     <header>
         <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/image_editor_output_image-2114367514-17610313795633610151855319212430.jpg?w=585" class="profile-pic" alt="Dave Rezaba">
         <h1>DAVE REZABA</h1>
-        <p style="color: var(--accent-red);">IT PROFESSIONAL</p>
+        <p>IT Professional | 25 Years Old</p>
     </header>
 
     <nav class="nav-tabs">
-        <button class="tab-btn active" onclick="openTab('about')">PROFILE</button>
-        <button class="tab-btn" onclick="openTab('projects')">WORKS</button>
+        <button class="tab-btn active" onclick="openTab('about')">Profile</button>
+        <button class="tab-btn" onclick="openTab('skills')">Skills</button>
+        <button class="tab-btn" onclick="openTab('certificates')">Certs</button>
+        <button class="tab-btn" onclick="openTab('projects')">Works</button>
     </nav>
 
     <section id="about" class="content-section active">
         <div class="card">
-            <h2>ABOUT ME</h2>
-            <p>Motivated IT professional focused on Networking, Hardware, and Web Development. Passionate about creating efficient digital solutions.</p>
-            <br>
-            <a href="#" class="link-button">DOWNLOAD CV</a>
+            <h2>Personal Profile</h2>
+            <p>Motivated and results-driven Information Technology student with a strong foundational understanding of networking principles, operating systems (Windows/Linux), and hardware configuration.</p>
+            
+            <ul class="info-list">
+                <li><strong>Age:</strong> 25</li>
+                <li><strong>Hobbies:</strong> Watching Movies, Playing Mobile Games, Hiking</li>
+                <li><strong>Location:</strong> Philippines</li>
+            </ul>
+
+            <div style="margin-top:20px;">
+                <a href="https://drive.google.com/file/d/1r3f-_ldsEQhzr6XcYDkHxjjw61izjLN7/view?usp=sharing" class="link-button">📄 Download CV</a>
+                <a href="mailto:daverezaba123@gmail.com" class="link-button">✉️ Email Me</a>
+            </div>
+
+            <hr style="margin: 35px 0; border: 0; border-top: 2px dashed #333;">
+            
+            <h3>My Companion: Lemon 🐾</h3>
+            <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/fb_img_16467307966414342928367721801311417410.jpg?w=576" style="width: 150px; border-color: var(--accent-red);" alt="Cat Lemon">
+            <p style="font-style: italic; color: var(--text-muted);">Lemon is my constant companion while coding and debugging!</p>
+        </div>
+    </section>
+
+    <section id="skills" class="content-section">
+        <div class="card">
+            <h2>Technical Skills</h2>
+            <div class="grid">
+                <div>
+                    <h3>Multimedia</h3>
+                    <p>Proficient in Adobe Photoshop for product design and layouts.</p>
+                    <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/img_20250910_1442366977657314798524633.jpg?w=771" alt="Multimedia Project">
+                </div>
+                <div>
+                    <h3>Web Dev</h3>
+                    <p>Hands-on experience with PHP and MySQL database management.</p>
+                    <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/img_20251014_1134147351683056492932065.jpg?w=1024" alt="PHP Practice">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" class="content-section">
+        <div class="card">
+            <h2>Certifications</h2>
+            <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/messenger_creation_b6abe9f4-d497-465a-8bca-718abc1be0e85320346413832331087.jpeg?w=1024" alt="Cisco Certificate">
+            <p style="margin-top:15px;"><strong>Cisco Networking Academy:</strong> Digital Safety and Security Awareness.</p>
         </div>
     </section>
 
     <section id="projects" class="content-section">
         <div class="card">
-            <h2>PROJECTS</h2>
-            <p>Explore my recent work in UI/UX and Web Development.</p>
+            <h2>Project Links</h2>
+            <div class="grid">
+                <a href="https://www.canva.com/design/DAGvdbovqI4/u73NBZSDJmGhv8i1Y7YoFw/edit" class="link-button" target="_blank">Canva Portfolio</a>
+                <a href="https://www.figma.com/proto/eAmQpeF1KxF3NUIVF04yJP/Untitled" class="link-button" target="_blank">Figma Prototype</a>
+                <a href="https://www.figma.com/design/pBy0n4gk14CFfs5cXbxADL/Untitled" class="link-button" target="_blank">E-Commerce UI</a>
+            </div>
+            
+            <h3 style="margin-top: 40px;">Tutorial References</h3>
+            <div class="grid">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/UB1O30fR-EE" title="HTML Crash Course"></iframe>
+                </div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/pQN-pnXPaVg" title="HTML 1 Hour"></iframe>
+                </div>
+            </div>
         </div>
     </section>
 </div>
 
+<div class="ai-toggle" onclick="toggleAI()">☁️</div>
+
+<div id="ai-widget">
+    <div id="ai-header">
+        <span>Portfolio Assistant</span>
+        <span onclick="toggleAI()" style="cursor:pointer">×</span>
+    </div>
+    <div id="ai-body">
+        <p>Hello! I'm Dave's virtual assistant. Ask me about his projects, skills, or even his cat Lemon!</p>
+    </div>
+    <div id="ai-input-area">
+        <input type="text" id="ai-input" placeholder="Type a message...">
+        <button id="ai-send" onclick="askAI()">Send</button>
+    </div>
+</div>
+
 <script>
     function openTab(tabId) {
-        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
         event.currentTarget.classList.add('active');
     }
+
+    function toggleAI() {
+        const widget = document.getElementById('ai-widget');
+        widget.style.display = (widget.style.display === 'flex') ? 'none' : 'flex';
+    }
+
+    function askAI() {
+        const input = document.getElementById('ai-input');
+        const body = document.getElementById('ai-body');
+        const q = input.value.toLowerCase();
+        
+        let response = "I'm not sure about that, but you can email Dave at daverezaba123@gmail.com!";
+
+        if (q.includes("name")) {
+            response = "The owner of this portfolio is Dave Rezaba.";
+        } else if (q.includes("age") || q.includes("old")) {
+            response = "Dave is currently 25 years old.";
+        } else if (q.includes("cat") || q.includes("lemon")) {
+            response = "Lemon is Dave's cute cat who helps him debug code!";
+        } else if (q.includes("contact") || q.includes("facebook") || q.includes("number")) {
+            response = "Reach Dave at:<br>• <b>Gmail:</b> daverezaba123@gmail.com<br>• <b>Facebook:</b> Dave Rezaba<br>• <b>Phone:</b> 09944145589";
+        } else if (q.includes("hobby") || q.includes("hobbies")) {
+            response = "Dave loves hiking, watching movies, and gaming.";
+        } else if (q.includes("skill") || q.includes("tech")) {
+            response = "Dave is skilled in PHP, MySQL, Networking, and Adobe Photoshop.";
+        }
+
+        body.innerHTML += `<div style="margin-top:10px; text-align:right;"><span style="background:var(--accent-red); color:white; padding:8px 12px; border-radius:12px; display:inline-block; border:1px solid var(--accent-red);">${input.value}</span></div>`;
+        body.innerHTML += `<div style="margin-top:10px;"><span style="background:#222; color:white; padding:8px 12px; border-radius:12px; display:inline-block; border:1px solid #333;">${response}</span></div>`;
+        body.scrollTop = body.scrollHeight;
+        input.value = "";
+    }
+
+    document.getElementById("ai-input").addEventListener("keyup", function(e) {
+        if (e.key === "Enter") askAI();
+    });
 </script>
 
 </body>
 </html>
+```
