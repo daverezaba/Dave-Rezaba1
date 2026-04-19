@@ -1,161 +1,250 @@
-<!-- wp:image {"id":45,"sizeSlug":"large","linkDestination":"none","className":"is-style-rounded"} -->
-<figure class="wp-block-image size-large is-style-rounded"><img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/image_editor_output_image-2114367514-17610313795633610151855319212430.jpg?w=585" alt="" class="wp-image-45"/></figure>
-<!-- /wp:image -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio website</title>
 
-<a href="https://drive.google.com/file/d/1r3f-_ldsEQhzr6XcYDkHxjjw61izjLN7/view?usp=sharing" download="https://drive.google.com/file/d/1r3f-_ldsEQhzr6XcYDkHxjjw61izjLN7/view?usp=sharing" class="explore-button">DOWNLOAD CV
+<style>
+:root {
+    --bg-main: #8b0000;
+    --black: #000000;
+    --white: #ffffff;
+    --red-accent: #ff1a1a;
+    --text-main: #ffffff;
+    --text-muted: #dddddd;
+    --card-bg: rgba(0, 0, 0, 0.75);
+    --transition: all 0.4s ease;
+}
 
-<!-- wp:paragraph {"align":"center","fontSize":"medium","style":{"typography":{"lineHeight":2}}} -->
-<p class="has-text-align-center has-medium-font-size" style="line-height:2"><strong>ABOUT ME</strong></p>
-<!-- /wp:paragraph -->
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+}
 
-<!-- wp:paragraph {"align":"center","backgroundColor":"theme-5","textColor":"theme-2"} -->
-<p class="has-text-align-center has-theme-2-color has-theme-5-background-color has-text-color has-background">Motivated and results-driven Information<strong> </strong>Technology student with a strong foundational understanding of networking principles, operating systems (Windows/Linux), and hardware configuration. Eager to leverage classroom knowledge and practical project experience to contribute to a dynamic IT environment. Seeking an opportunity to develop hands-on skills in system administration and technical support.</p>
-<!-- /wp:paragraph -->
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+}
 
-<!-- wp:paragraph {"align":"center","fontSize":"large"} -->
-<p class="has-text-align-center has-large-font-size"><strong>SKILLS</strong></p>
-<!-- /wp:paragraph -->
+/* Animated Red Background */
+.live-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(120deg, #8b0000, #b30000, #ff1a1a, #8b0000);
+    background-size: 300% 300%;
+    animation: move 10s infinite;
+}
 
-<!-- wp:image {"id":58,"sizeSlug":"large"} -->
-<figure class="wp-block-image size-large"><img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/messenger_creation_b6abe9f4-d497-465a-8bca-718abc1be0e85320346413832331087.jpeg?w=1024" alt="" class="wp-image-58"/><figcaption class="wp-element-caption">Certificate of student level credential for completing the Digital Safety and Security Awareness course, provided by Cisco Networking Academy.</figcaption></figure>
-<!-- /wp:image -->
+@keyframes move {
+    0% {background-position:0%}
+    50% {background-position:100%}
+    100% {background-position:0%}
+}
 
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
 
-<!-- wp:image {"id":54,"sizeSlug":"large","linkDestination":"none","className":"is-style-default"} -->
-<figure class="wp-block-image size-large is-style-default"><img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/img_20250904_1341521781745091978611341.jpg?w=1024" alt="" class="wp-image-54"/></figure>
-<!-- /wp:image -->
+/* Header */
+header {
+    text-align: center;
+    padding: 70px 20px 30px;
+}
 
-<!-- wp:image {"id":55,"sizeSlug":"large","linkDestination":"none","className":"is-style-default"} -->
-<figure class="wp-block-image size-large is-style-default"><img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/img_20250924_1507045839965630756369857.jpg?w=1024" alt="" class="wp-image-55"/></figure>
-<!-- /wp:image -->
+.profile-pic {
+    width: 150px;
+    border-radius: 50%;
+    border: 4px solid white;
+}
 
-<!-- wp:paragraph {"align":"center","backgroundColor":"theme-5","textColor":"theme-1"} -->
-<p class="has-text-align-center has-theme-1-color has-theme-5-background-color has-text-color has-background">T shirt Layout and YouTube Template Design for our MULTI MEDIA SYSTEMS, BSAB inspired color for an IT Department design hits different!</p>
-<!-- /wp:paragraph -->
+h1 { color: white; }
+header p { color: var(--red-accent); }
 
-<!-- wp:image {"id":21,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/img_20250910_1442366977657314798524633.jpg?w=771" alt="" class="wp-image-21"/></figure>
-<!-- /wp:image -->
+/* Tabs */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
 
-<!-- wp:paragraph {"align":"center","backgroundColor":"theme-5","textColor":"theme-1"} -->
-<p class="has-text-align-center has-theme-1-color has-theme-5-background-color has-text-color has-background"><br />This is a Product Output in our MULTIMEDIA subject, first we created an product sample using Adobe Photoshop and then made the product personally.</p>
-<!-- /wp:paragraph -->
+.tab-btn {
+    background: black;
+    color: white;
+    border: 1px solid #222;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
-<!-- wp:image {"id":22,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/img_20251014_1134147351683056492932065.jpg?w=1024" alt="" class="wp-image-22"/></figure>
-<!-- /wp:image -->
+.tab-btn:hover, .tab-btn.active {
+    background: var(--red-accent);
+}
 
-<!-- wp:paragraph {"align":"center","backgroundColor":"theme-5","textColor":"theme-1"} -->
-<p class="has-text-align-center has-theme-1-color has-theme-5-background-color has-text-color has-background">PHP code that we practiced in our laboratory this code shows how to connect and display the output in real time using php my admin to database and you can search it by copying the URL in the browser</p>
-<!-- /wp:paragraph -->
+/* Sections */
+.content-section { display: none; }
+.content-section.active { display: block; }
 
-<!-- wp:image {"id":37,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/image_editor_output_image1780041489-17610293932032936794629853507599.jpg?w=539" alt="" class="wp-image-37"/></figure>
-<!-- /wp:image -->
+/* Cards */
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
 
-<!-- wp:paragraph {"align":"center","backgroundColor":"theme-5","textColor":"theme-1"} -->
-<p class="has-text-align-center has-theme-1-color has-theme-5-background-color has-text-color has-background">HTML Project from our very beautiful and loving instructor "Miss Mercy" 🫶 if you visit this project you can click the links and it will bring you to my output samples.</p>
-<!-- /wp:paragraph -->
+h2, h3 { color: var(--red-accent); }
 
-<!-- wp:image {"id":25,"sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/fb_img_16467307966414342928367721801311417410.jpg?w=576" alt="" class="wp-image-25"/><figcaption class="wp-element-caption">And of course My Cat Lemon 😁</figcaption></figure>
-<!-- /wp:image -->
+.info-list li {
+    border-bottom: 1px solid #333;
+    padding: 10px 0;
+}
 
-<!-- wp:heading {"level":5} -->
-<h5 class="wp-block-heading">PORTFOLIO IN CANVA<strong>&nbsp;</strong>&nbsp;&nbsp; <a href="https://www.canva.com/design/DAGvdbovqI4/u73NBZSDJmGhv8i1Y7YoFw/edit?utm_content=DAGvdbovqI4&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton">click here</a></h5>
-<!-- /wp:heading -->
+/* Buttons */
+.link-button {
+    background: black;
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid red;
+    text-decoration: none;
+    border-radius: 8px;
+}
 
-<!-- wp:paragraph -->
-<p></p>
-<!-- /wp:paragraph -->
+.link-button:hover {
+    background: red;
+}
 
-<!-- wp:heading {"level":5} -->
-<h5 class="wp-block-heading">PORTFOLIO IN FIGMA <a href="https://www.figma.com/proto/eAmQpeF1KxF3NUIVF04yJP/Untitled?node-id=2-32&amp;starting-point-node-id=2%3A26&amp;t=cmKT7jcunyEAsmPc-1">clickhere</a></h5>
-<!-- /wp:heading -->
+/* AI */
+.ai-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: black;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
 
-<!-- wp:paragraph -->
-<p></p>
-<!-- /wp:paragraph -->
+#ai-widget {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background: black;
+    color: white;
+}
 
-<!-- wp:heading {"level":5} -->
-<h5 class="wp-block-heading">E-COMMERCE IN FIGMA <a href="https://www.figma.com/design/pBy0n4gk14CFfs5cXbxADL/Untitled?node-id=0-1&amp;t=ANla11ipNHuYHCc1-1">click here</a></h5>
-<!-- /wp:heading -->
+#ai-header {
+    background: black;
+    padding: 10px;
+}
 
-  <title>HTML Tutorials</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f7f7f7;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    h1 {
-      background-color: #0077cc;
-      color: white;
-      padding: 20px 0;
-      margin-bottom: 30px;
-    }
-    .video-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 0 20px 40px;
-    }
-    .video {
-      background-color: white;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      width: 350px;
-      padding: 10px;
-    }
-    iframe {
-      width: 100%;
-      height: 200px;
-      border-radius: 8px;
-      border: none;
-    }
-    h2 {
-      font-size: 18px;
-      margin: 10px 0;
-      color: #333;
-    }
-  </style>
+#ai-body {
+    height: 200px;
+    overflow: auto;
+    padding: 10px;
+}
+
+#ai-input-area {
+    display: flex;
+}
+
+#ai-input {
+    flex: 1;
+    background: black;
+    color: white;
+}
+
+#ai-send {
+    background: red;
+    color: white;
+}
+</style>
 </head>
+
 <body>
 
-  <h1>Top 3 HTML Tutorial Videos</h1>
+<div class="live-bg"></div>
 
-  <div class="video-container">
-    <div class="video">
-      <h2>1. HTML Crash Course for Beginners</h2>
-      <iframe src="https://www.youtube.com/embed/UB1O30fR-EE" 
-              title="HTML Crash Course for Beginners"
-              allowfullscreen></iframe>
-    </div>
+<div class="container">
+<header>
+<img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2025/10/image_editor_output_image-2114367514-17610313795633610151855319212430.jpg?w=585" class="profile-pic">
+<h1>DAVE REZABA</h1>
+<p>IT Professional | 25 Years Old</p>
+</header>
 
-    <div class="video">
-      <h2>2. Learn HTML in 1 Hour</h2>
-      <iframe src="https://www.youtube.com/embed/pQN-pnXPaVg"
-              title="Learn HTML in 1 Hour"
-              allowfullscreen></iframe>
-    </div>
+<nav class="nav-tabs">
+<button class="tab-btn active" onclick="openTab('about')">Profile</button>
+<button class="tab-btn" onclick="openTab('skills')">Skills</button>
+<button class="tab-btn" onclick="openTab('certificates')">Certs</button>
+<button class="tab-btn" onclick="openTab('projects')">Works</button>
+</nav>
 
-    <div class="video">
-      <h2>3. HTML Tutorial for Absolute Beginners</h2>
-      <iframe src="https://www.youtube.com/embed/ok-plXXHlWw"
-              title="HTML Tutorial for Absolute Beginners"
-              allowfullscreen></iframe>
-      
+<section id="about" class="content-section active">
+<div class="card">
+<h2>Personal Profile</h2>
+<p>Motivated and results-driven Information Technology student...</p>
+</div>
+</section>
 
-    </div>
-  </div>
+<section id="skills" class="content-section">
+<div class="card">
+<h2>Technical Skills</h2>
+</div>
+</section>
+
+<section id="certificates" class="content-section">
+<div class="card">
+<h2>Certifications</h2>
+</div>
+</section>
+
+<section id="projects" class="content-section">
+<div class="card">
+<h2>Project Links</h2>
+</div>
+</section>
+
+</div>
+
+<div class="ai-toggle" onclick="toggleAI()">☁️</div>
+
+<div id="ai-widget">
+<div id="ai-header">Portfolio Assistant</div>
+<div id="ai-body"></div>
+<div id="ai-input-area">
+<input type="text" id="ai-input">
+<button id="ai-send" onclick="askAI()">Send</button>
+</div>
+</div>
+
+<script>
+function openTab(id){
+document.querySelectorAll('.content-section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+function toggleAI(){
+let w=document.getElementById('ai-widget');
+w.style.display = w.style.display==='block'?'none':'block';
+}
+
+function askAI(){
+let input=document.getElementById('ai-input');
+let body=document.getElementById('ai-body');
+body.innerHTML += "<p>"+input.value+"</p>";
+input.value="";
+}
+</script>
 
 </body>
 </html>
-
-
-
-
-
